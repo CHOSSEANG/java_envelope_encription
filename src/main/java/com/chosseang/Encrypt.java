@@ -1,7 +1,6 @@
 package com.chosseang;
 
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -9,16 +8,16 @@ import javax.crypto.SecretKey;
 public class Encrypt {
 
 	public static SecretKey encrypt() throws NoSuchAlgorithmException {
-		KeyGenerator dataKey = GenerateKey();
+		SecretKey dataKey = GenerateKey();
 
-		return dataKey.generateKey();
+		return dataKey;
 	}
 
-	public static KeyGenerator GenerateKey() throws NoSuchAlgorithmException {
+	public static SecretKey GenerateKey() throws NoSuchAlgorithmException {
 		KeyGenerator keyGenerator = KeyGenerator.getInstance(CryptoConstants.AES_ALGORITHM);
 		keyGenerator.init(CryptoConstants.AES_KEY_SIZE);
 
-		return keyGenerator;
+		return keyGenerator.generateKey();
 	}
 }
 
