@@ -5,8 +5,11 @@ public class Main {
 
 		System.out.println("Hello world!");
 
-		String dataKey = Encrypt.encrypt("test");
+		EncryptResult dataKey = Encrypt.encrypt("test");
 
-		System.out.println(dataKey);
+		System.out.println(dataKey.getDataKey());
+		System.out.println(dataKey.getIv());
+		System.out.println(dataKey.getEncryptedData());
+
 	}
 }
