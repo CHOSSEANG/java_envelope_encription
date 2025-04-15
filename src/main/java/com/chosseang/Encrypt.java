@@ -1,33 +1,29 @@
 package com.chosseang;
 
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
 public class Encrypt {
 
-	public static String encrypt(String plainText) throws
-		NoSuchAlgorithmException,
-		NoSuchPaddingException,
-		InvalidKeyException,
-		IllegalBlockSizeException,
-		BadPaddingException {
-		SecretKey dataKey = GenerateKey();
+	public static String encrypt(String plainText) {
+		try {
+			SecretKey dataKey = GenerateKey();
 
-		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		cipher.init(Cipher.ENCRYPT_MODE, dataKey);
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher.init(Cipher.ENCRYPT_MODE, dataKey);
 
-		byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+			byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
 
-		return new String(Base64.getEncoder().encode(encrypted));
+			return new String(Base64.getEncoder().encode(encrypted));
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 
 	public static SecretKey GenerateKey() throws NoSuchAlgorithmException {
