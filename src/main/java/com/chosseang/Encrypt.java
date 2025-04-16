@@ -28,10 +28,8 @@ public class Encrypt {
 
 			// 결과 인코딩
 			String encryptedBase64 = Base64.getEncoder().encodeToString(encrypted);
-			String keyBase64 = Base64.getEncoder().encodeToString(dataKey.getEncoded());
-			String ivBase64 = Base64.getEncoder().encodeToString(iv);
 
-			return new EncryptResult(encryptedBase64, keyBase64, ivBase64);
+			return new EncryptResult(encryptedBase64, dataKey, ivParameterSpec);
 		} catch (Exception e) {
 			return null;
 		}
