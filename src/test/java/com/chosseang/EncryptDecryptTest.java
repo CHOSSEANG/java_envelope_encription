@@ -14,8 +14,8 @@ public class EncryptDecryptTest {
 
 		DecryptRequest decryptRequst = new DecryptRequest(encryptResult.getEncryptedData(),encryptResult.getIv(),encryptResult.getDataKey());
 
-		String decryptResult = Encrypt.decrypt(decryptRequst);
+		DecryptResult decryptResult = Encrypt.decrypt(decryptRequst);
 
-		Assertions.assertEquals(input,decryptResult);
+		Assertions.assertEquals(input,decryptResult.getDecryptedData());
 	}
 }

@@ -35,7 +35,7 @@ public class Encrypt {
 		}
 	}
 
-	public static String decrypt(DecryptRequest decryptRequest){
+	public static DecryptResult decrypt(DecryptRequest decryptRequest){
 		try{
 			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
@@ -45,7 +45,8 @@ public class Encrypt {
 
 			cipher.init(Cipher.DECRYPT_MODE, dataKey,iv);
 			byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encryptedData));
-			return new String(decrypted, StandardCharsets.UTF_8);
+			String decryptedBase64 = new String(decrypted, StandardCharsets.UTF_8);
+			return new DecryptResult(decryptedBase64, iv,dataKey);
 		} catch(Exception e){
 			return null;
 		}
