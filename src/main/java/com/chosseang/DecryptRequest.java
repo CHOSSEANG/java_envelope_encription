@@ -1,17 +1,20 @@
 package com.chosseang;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+
 public class DecryptRequest {
 	private final String encryptedData;
-	private final String iv;
-	private final String dataKey;
+	private final IvParameterSpec iv;
+	private final SecretKey dataKey;
 
-	public DecryptRequest(String encryptedData, String iv, String dataKey) {
+	public DecryptRequest(String encryptedData, IvParameterSpec iv, SecretKey dataKey) {
 		this.encryptedData = encryptedData;
 		this.iv = iv;
 		this.dataKey = dataKey;
 	}
 
 	public String getEncryptedData() {return encryptedData;}
-	public String getIv() {return iv;}
-	public String getDataKey() {return dataKey;}
+	public IvParameterSpec getIv() {return iv;}
+	public SecretKey getDataKey() {return dataKey;}
 }
