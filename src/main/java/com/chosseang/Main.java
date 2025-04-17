@@ -5,11 +5,15 @@ public class Main {
 
 		System.out.println("Hello world!");
 
-		EncryptResult dataKey = Encrypt.encrypt("test");
+		EncryptResult encryptedData = Encrypt.encrypt("test");
 
-		System.out.println(dataKey.getDataKey());
-		System.out.println(dataKey.getIv());
-		System.out.println(dataKey.getEncryptedData());
+		System.out.println("암호화");
+		System.out.println(encryptedData.getDataKey());
+		System.out.println(encryptedData.getIv());
+		System.out.println(encryptedData.getEncryptedData());
 
+		String data = Encrypt.decrypt(new DecryptRequest(encryptedData.getEncryptedData(), encryptedData.getIv(),encryptedData.getDataKey()));
+		System.out.println("복호화");
+		System.out.println(data);
 	}
 }

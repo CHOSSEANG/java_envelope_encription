@@ -35,6 +35,22 @@ public class Encrypt {
 		}
 	}
 
+	public static String decrypt(DecryptRequest decryptRequest){
+		try{
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+			SecretKey dataKey = decryptRequest.getDataKey();
+			IvParameterSpec iv = decryptRequest.getIv();
+			String encryptedData = decryptRequest.getEncryptedData();
+
+			cipher.init(Cipher.DECRYPT_MODE, dataKey,iv);
+			byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encryptedData));
+			return new String(decrypted, StandardCharsets.UTF_8);
+		} catch(Exception e){
+			return null;
+		}
+	}
+
 	public static SecretKey GenerateKey() throws NoSuchAlgorithmException {
 		KeyGenerator keyGenerator = KeyGenerator.getInstance(CryptoConstants.AES_ALGORITHM);
 		keyGenerator.init(CryptoConstants.AES_KEY_SIZE);
