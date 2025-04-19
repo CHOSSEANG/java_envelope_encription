@@ -12,7 +12,7 @@ public class EncryptDecryptTest {
 
 		EncryptResult encryptResult = Encrypt.encrypt(input);
 
-		DecryptRequest decryptRequst = new DecryptRequest(encryptResult.getEncryptedData(),encryptResult.getIv(),encryptResult.getDataKey());
+		DecryptRequestParam decryptRequst = new DecryptRequestParam(encryptResult.getEncryptedData(),encryptResult.getIv(),encryptResult.getDataKey());
 
 		DecryptResult decryptResult = Encrypt.decrypt(decryptRequst);
 

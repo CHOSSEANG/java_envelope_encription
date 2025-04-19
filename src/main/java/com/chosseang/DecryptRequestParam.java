@@ -3,12 +3,12 @@ package com.chosseang;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
-public class DecryptRequest {
+public class DecryptRequestParam {
 	private final String encryptedData;
 	private final IvParameterSpec iv;
 	private final SecretKey dataKey;
 
-	public DecryptRequest(String encryptedData, IvParameterSpec iv, SecretKey dataKey) {
+	public DecryptRequestParam(String encryptedData, IvParameterSpec iv, SecretKey dataKey) {
 		this.encryptedData = encryptedData;
 		this.iv = iv;
 		this.dataKey = dataKey;

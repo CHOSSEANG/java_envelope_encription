@@ -35,13 +35,13 @@ public class Encrypt {
 		}
 	}
 
-	public static DecryptResult decrypt(DecryptRequest decryptRequest){
+	public static DecryptResult decrypt(DecryptRequestParam decryptRequestParam){
 		try{
 			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
-			SecretKey dataKey = decryptRequest.getDataKey();
-			IvParameterSpec iv = decryptRequest.getIv();
-			String encryptedData = decryptRequest.getEncryptedData();
+			SecretKey dataKey = decryptRequestParam.getDataKey();
+			IvParameterSpec iv = decryptRequestParam.getIv();
+			String encryptedData = decryptRequestParam.getEncryptedData();
 
 			cipher.init(Cipher.DECRYPT_MODE, dataKey,iv);
 			byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encryptedData));

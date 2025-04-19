@@ -13,7 +13,7 @@ public class Main {
 		System.out.println(encryptedData.getEncryptedData());
 
 		DecryptResult data = Encrypt.decrypt(
-			new DecryptRequest(encryptedData.getEncryptedData(), encryptedData.getIv(), encryptedData.getDataKey()));
+			new DecryptRequestParam(encryptedData.getEncryptedData(), encryptedData.getIv(), encryptedData.getDataKey()));
 		System.out.println("복호화");
 		System.out.println(data.getDataKey());
 		System.out.println(data.getIv());
