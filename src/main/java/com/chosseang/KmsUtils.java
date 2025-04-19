@@ -18,14 +18,14 @@ public class KmsUtils {
 
 	public static String keyId;
 
-	private static final Regions REGIONS = Regions.AP_NORTHEAST_2;
+	private static final Regions REGIONS = Regions.AP_SOUTHEAST_2;
 	private static final EncryptionAlgorithmSpec ALGORITHM = EncryptionAlgorithmSpec.SYMMETRIC_DEFAULT;
 
 	// BasicAWSCredentials awsCreds = new BasicAWSCredentials("access_key_id", "secret_key_id");
 
 	AWSKMS kmsClient = AWSKMSClientBuilder.standard()
 		//.withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-		.withRegion(Regions.AP_NORTHEAST_2)
+		.withRegion(Regions.AP_SOUTHEAST_2)
 		.build();
 
 	public void init(String keyIdInput) {
