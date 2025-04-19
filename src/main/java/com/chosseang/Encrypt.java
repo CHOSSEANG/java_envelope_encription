@@ -58,6 +58,18 @@ public class Encrypt {
 
 		return keyGenerator.generateKey();
 	}
+
+	public static String encryptKey(String masterKey) {
+
+
+		return "";
+	}
+
+	public static SecretKey decryptKey() {
+
+
+		return null;
+	}
 }
 
 class CryptoConstants {
